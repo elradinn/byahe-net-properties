@@ -87,7 +87,7 @@ const LoginModal = () => {
         <div className="flex flex-col gap-4 mt-3">
             <div className="flex flex-row items-center gap-3">
                 <div className="w-full h-[1px] bg-neutral-200" />
-                <div className="text-xs font-semibold text-neutral-500">or</div>
+                {/* <div className="text-xs font-semibold text-neutral-500">or</div> */}
                 <div className="w-full h-[1px] bg-neutral-200" />
             </div>
             {/* <Button
