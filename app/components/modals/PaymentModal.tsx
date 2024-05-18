@@ -14,10 +14,12 @@ import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const PaymentModal = () => {
     const paymentModal = usePaymentModal();
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const {
         register,
@@ -29,21 +31,17 @@ const PaymentModal = () => {
         },
     });
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit = useCallback(() => {
         setIsLoading(true);
 
-        axios
-            .post("/api/register", data)
-            .then(() => {
-                toast.success("Successfully registered! 🚀");
-            })
-            .catch((err) => {
-                toast.error(err.message);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
-    };
+        setTimeout(() => {
+            toast.success("Listing reserved! 🛫");
+            router.push("/trips");
+            paymentModal.onClose();
+        }, 2000);
+
+        setIsLoading(false);
+    }, [router]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -94,7 +92,7 @@ const PaymentModal = () => {
         <Modal
             disabled={isLoading}
             isOpen={paymentModal.isOpen}
-            title="Register"
+            title="Payment"
             actionLabel="Continue"
             onClose={paymentModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
