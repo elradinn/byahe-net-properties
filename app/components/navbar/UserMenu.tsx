@@ -39,17 +39,6 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div className="relative">
             <div className="flex flex-row items-center">
                 <div
-                    onClick={onRent}
-                    className="hidden px-4 py-3 text-sm font-bold transition rounded-full cursor-pointer md:block hover:bg-neutral-100 text-neutral-800 whitespace-nowrap"
-                >
-                    Airbnb your home
-                </div>
-                <div className="hidden md:block">
-                    <div className="p-4 mr-2 transition rounded-full cursor-pointer hover:bg-neutral-100">
-                        <FiGlobe size={18} />
-                    </div>
-                </div>
-                <div
                     onClick={toggleOpen}
                     className={`
                         p-4

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Range } from 'react-date-range';
-import Calendar from '../inputs/Calendar';
-import Button from '../Button';
+import { Range } from "react-date-range";
+import Calendar from "../inputs/Calendar";
+import Button from "../Button";
 
 interface ListingReservationProps {
     price: number;
@@ -14,12 +14,11 @@ interface ListingReservationProps {
     disabled?: boolean;
     disabledDates?: Date[] | [];
     daysCount?: number;
-    fees: {name: string, amount: number}[] | [];
+    fees: { name: string; amount: number }[] | [];
     tax: number;
 }
 
-
-const ListingReservation : React.FC<ListingReservationProps> = ({
+const ListingReservation: React.FC<ListingReservationProps> = ({
     price,
     dateRange,
     totalPerNight,
@@ -30,7 +29,7 @@ const ListingReservation : React.FC<ListingReservationProps> = ({
     disabledDates,
     daysCount,
     fees,
-    tax
+    tax,
 }) => {
     return (
         <div
@@ -46,59 +45,45 @@ const ListingReservation : React.FC<ListingReservationProps> = ({
             "
         >
             <div className="flex flex-row items-center gap-1 p-4">
-                <div className="text-2xl font-semibold">
-                    ${price} CAD
-                </div>
-                <div className="font-light next-neutral-600">
-                    night
-                </div>
+                <div className="text-2xl font-semibold">PHP {price}</div>
+                <div className="font-light next-neutral-600">night</div>
             </div>
             {/* <hr /> */}
             <Calendar
                 value={dateRange}
                 disabledDates={disabledDates}
-                onChange={val => onChangeDate(val.selection)}
+                onChange={(val) => onChangeDate(val.selection)}
             />
-            <Button
-                disabled={disabled}
-                label="Reserve"
-                onClick={onSubmit}
-            />
+            <Button disabled={disabled} label="Reserve" onClick={onSubmit} />
             <div className="flex flex-row justify-between my-6 text-neutral-560">
-                <div className="underline">${price} CAD x {daysCount || 1} {daysCount || 1 > 1 ? 'nights' : 'night'}</div>
-                <div>${totalPerNight} CAD</div>
+                <div className="underline">
+                    PHP {price} x {daysCount || 1}{" "}
+                    {daysCount || 1 > 1 ? "nights" : "night"}
+                </div>
+                <div>PHP {totalPerNight}</div>
             </div>
             <div>
                 {fees.map((fee, index) => (
-                    <div key={index} className="flex flex-row justify-between my-6 text-neutral-600">
+                    <div
+                        key={index}
+                        className="flex flex-row justify-between my-6 text-neutral-600"
+                    >
                         <div className="underline">{fee.name}</div>
-                        <div>{`$${fee.amount} CAD`}</div>
+                        <div>{`PHP ${fee.amount}`}</div>
                     </div>
                 ))}
             </div>
             <div className="flex flex-row justify-between my-6 text-neutral-600">
                 <div className="underline">Taxes</div>
-                <div>${tax} CAD</div>
+                <div>PHP {tax}</div>
             </div>
             <hr className="my-4" />
-            <div
-                className="
-                    flex
-                    flex-row
-                    items-center
-                    justify-between
-                    font-semibold
-                "
-            >
-                <div>
-                    Total
-                </div>
-                <div>
-                    ${totalPrice} CAD
-                </div>
+            <div className="flex flex-row items-center justify-between font-semibold ">
+                <div>Total</div>
+                <div>PHP {totalPrice}</div>
             </div>
         </div>
     );
-}
- 
+};
+
 export default ListingReservation;
