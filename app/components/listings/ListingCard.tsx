@@ -73,12 +73,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             onClick={() => router.push(`/listings/${data.id}`)}
             className="col-span-1 cursor-pointer  group"
         >
-            <div
-                className="flex flex-col w-full gap-2 "
-            >
-                <div
-                    className="relative w-full overflow-hidden  aspect-square rounded-xl"
-                >
+            <div className="flex flex-col w-full gap-2 ">
+                <div className="relative w-full overflow-hidden  aspect-square rounded-xl">
                     <Image
                         fill
                         alt="Listing"
@@ -98,24 +94,18 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         </div>
                     )}
                 </div>
-                <div
-                    className="flex flex-row items-center w-full gap-3 text-lg font-semibold  whitespace-nowrap"
-                >
+                <div className="flex flex-row items-center w-full gap-3 text-lg font-semibold  whitespace-nowrap">
                     {location?.region}, {location?.label}{" "}
                     {newest && (
-                        <div className="text-sm font-semibold text-rose-500">
+                        <div className="text-sm font-semibold text-blue-500">
                             <BsStars />
                         </div>
                     )}
                 </div>
-                <div
-                    className="font-light  text-neutral-500"
-                >
+                <div className="font-light  text-neutral-500">
                     {reservationDate || data.category}
                 </div>
-                <div
-                    className="flex flex-row items-center gap-1 "
-                >
+                <div className="flex flex-row items-center gap-1 ">
                     <div className="font-semibold">PHP {price}</div>
                     {!reservation && <div className="font-light">night</div>}
                 </div>

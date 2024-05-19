@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { useMemo } from 'react';
-import { BiSearch } from 'react-icons/bi'
-import { useSearchParams } from 'next/navigation';
-import { differenceInDays } from 'date-fns';
+import { useMemo } from "react";
+import { BiSearch } from "react-icons/bi";
+import { useSearchParams } from "next/navigation";
+import { differenceInDays } from "date-fns";
 
-import useCountries from '@/app/hooks/useCountries';
-import useSearchModal from '@/app/hooks/useSearchModal';
+import useCountries from "@/app/hooks/useCountries";
+import useSearchModal from "@/app/hooks/useSearchModal";
 
 const Search = () => {
     const searchModal = useSearchModal();
     const params = useSearchParams();
     const { getByValue } = useCountries();
 
-    const locationValue = params?.get('locationValue');
-    const startDate = params?.get('startDate');
-    const endDate = params?.get('endDate');
-    const guestCount = params?.get('guestCount');
+    const locationValue = params?.get("locationValue");
+    const startDate = params?.get("startDate");
+    const endDate = params?.get("endDate");
+    const guestCount = params?.get("guestCount");
 
     const locationLabel = useMemo(() => {
         if (locationValue) {
             return getByValue(locationValue as string)?.label;
         }
 
-        return 'Anywhere';
+        return "Anywhere";
     }, [locationValue, getByValue]);
 
     const durationLabel = useMemo(() => {
@@ -36,18 +36,20 @@ const Search = () => {
                 diff = 1;
             }
 
-            return `${diff} ${diff > 1 ? 'Days' : 'Day'}`
+            return `${diff} ${diff > 1 ? "Days" : "Day"}`;
         }
 
-        return 'Any Week';
+        return "Any Week";
     }, [startDate, endDate]);
 
     const guestLabel = useMemo(() => {
         if (guestCount) {
-            return `${guestCount} ${parseInt(guestCount) > 1 ? 'Guests' : 'Guest'}`;
+            return `${guestCount} ${
+                parseInt(guestCount) > 1 ? "Guests" : "Guest"
+            }`;
         }
 
-        return 'Add Guests';
+        return "Add Guests";
     }, [guestCount]);
 
     return (
@@ -118,7 +120,7 @@ const Search = () => {
                         gap-3
                     "
                 >
-                    <div 
+                    <div
                         className="
                             hidden 
                             sm:block
@@ -127,10 +129,10 @@ const Search = () => {
                     >
                         {guestLabel}
                     </div>
-                    <div 
+                    <div
                         className="
                             p-1.5
-                            bg-rose-500
+                            bg-blue-500
                             rounded-full
                             text-white
                         "
@@ -141,6 +143,6 @@ const Search = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Search;

@@ -189,7 +189,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
                                         booked.
                                     </div>
                                     <IoDiamondOutline
-                                        className="ml-4 text-rose-500"
+                                        className="ml-4 text-blue-500"
                                         size={50}
                                     />
                                 </div>
